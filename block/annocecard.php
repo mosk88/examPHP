@@ -1,9 +1,11 @@
 
-<?php $reponse = $pdo->query('SELECT * FROM dauphineexam.annonce');
+<?php 
+//appel de l'annoce de la bdd
+$reponse = $pdo->query('SELECT * FROM dauphineexam.annonce');
 $annonces = $reponse->fetchAll();?>
-<div class="col-2 border border-danger b-2 rounded bg-black text-white mx-auto    ">
+<div class="container col-2 row justify-content-center border-danger b-2 rounded bg-black text-white mx-auto    ">
 <p class="text-center"><?php echo ($annonce['titre']); ?></p>
-        <img src="<?php echo ($annonce['imageUrl']); ?>" class="img-fluid  " alt="img annonce">
+        <img src="<?php echo ($annonce['imageUrl']); ?>" class="img-fluid"  alt="img annonce">
        
         <p class="text-center"><?php echo ($annonce['contenu']); ?></p>
         <p class="text-center"><?php echo ($annonce['datePublication']); ?></p>

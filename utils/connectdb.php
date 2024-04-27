@@ -1,6 +1,6 @@
 <?php
 
-
+// Connexion a la base de données
 function connectDB()
 {
 
@@ -26,7 +26,7 @@ function connectDB()
         exit();
     }
 }
-
+//configeration du PDO
 function configPdo(PDO $pdo)
 {
     // Recevoir les erreurs PDO ( coté SQL )

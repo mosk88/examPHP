@@ -1,11 +1,14 @@
 <?php
+//appel de la fonction de connexion a la bdd
 require_once('../utils/connectdb.php');
 $title = "add annonce";
+//include header
 include_once('../block/header.php');
+//renforcer la securité de la page 
 //if (!isset($_SESSION['username'])) {
    // header("location:login.php");
 //}
-
+//traitement du formulaire de l'admin
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $opd = connectdb();
     $query = $opd->prepare('INSERT INTO annonce ( imageUrl,  contenu, titre, auteur, datePublication)

@@ -5,11 +5,12 @@ $title = "Update annonce";
 include_once('../block/header.php');
 $pdo = connectDB();
 configPdo($pdo);
+//recuperation de l'annonce de la bdd par son id 
 $reponse = $pdo->prepare('SELECT * FROM annonce WHERE id = :id');
 $reponse->execute([':id' => $_GET['id']]);
 $annonce = $reponse->fetch();
 
-
+//traitement du formulaire de l'admin modification
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $opd = connectdb();
     $query = $opd->prepare('UPDATE annonce SET  imageUrl = :imageUrl, contenu = :contenu, titre = :titre, auteur = :auteur WHERE id = :id');

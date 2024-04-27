@@ -1,9 +1,12 @@
 <?php
+
 $title = "Dauphine";
 require_once('../utils/connectdb.php');
 $pdo = connectDB();
 configPdo($pdo);
-$reponse = $pdo->query('SELECT * FROM dauphineexam.annonce order by datePublication desc');
+//recuperation des annonces de la bdd
+$reponse = $pdo->prepare('SELECT * FROM dauphineexam.annonce order by datePublication desc');
+$reponse->execute();
 $annonces = $reponse->fetchAll();
 //var_dump($annonces);
 
@@ -17,14 +20,16 @@ $annonces = $reponse->fetchAll();
     <title><?php echo ($title ?? "Default Title") ?></title>
 </head>
 
-<body class="">
+<body >
     <h1 class="text-center text-uppercase bg-light  "><?php echo ($title ?? "Default Title") ?></h1>
-    <div class="d-flex justify-content-evenly align-items-center flex-wrap gap-3 bg-danger ">
+    <div class="d-flex justify-content-between align-items-center  bg-danger ">
+        <!-- boucle affichage des annonces -->
         <?php foreach ($annonces as $annonce) { ?>
         <?php include("../block/annocecard.php");
         } ?>
 
     </div>
+    <!-- include du footer -->
     <?php
 include_once("../block/footer.php");
 ?>

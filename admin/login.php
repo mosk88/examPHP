@@ -6,7 +6,7 @@ require_once('../utils/connectdb.php');
 
 $errors = [];
 
-// est ce que j'ai validé le form
+//traitement du formulaire de l'admin 
 if ($_SERVER["REQUEST_METHOD"] == "POST"&& isset($_POST['username'],$_POST['password'])) {
 
 $pdo=connectdb();
