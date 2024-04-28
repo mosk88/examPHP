@@ -1,5 +1,6 @@
 
-<?php $reponse = $pdo->query('SELECT * FROM dauphineexam.annonce');
+<?php $reponse = $pdo->prepare('SELECT * FROM dauphineexam.annonce');
+$reponse->execute();
 $annonces = $reponse->fetchAll();?>
 <div class="   col-2 border border-danger  rounded bg-black text-white mx-auto   ">
 <p class="text-center"><?php echo ($annonce['titre']); ?></p>
