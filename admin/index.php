@@ -1,9 +1,9 @@
 <?php
-session_start();
 
-//session_destroy();
+
+
 if (!isset($_SESSION['username'])) {
-    header("location:login.php");
+    header("location:../login.php");
 }
 $title = "Dauphine";
 require_once('../utils/connectdb.php');
@@ -26,16 +26,15 @@ $annonces = $reponse->fetchAll();
 <body class="">
     <h1 class="text-center text-uppercase bg-light  "><?php echo ($title ?? "Default Title") ?></h1>
     <div class="d-flex justify-content-evenly align-items-center flex-wrap gap-3 bg-danger ">
-    <a class="btn btn-primary w-25 m-2  "  href="addannonce.php">ajouter</a>
-       
-        </div>
+        <a class="btn btn-primary w-25 m-2  " href="../admin/addannonce.php">ajouter</a>
+
+    </div>
     <div class="d-flex justify-content-evenly align-items-center flex-wrap gap-3 bg-danger ">
         <?php foreach ($annonces as $annonce) { ?>
-        <?php include("../admin/annoncecardadmin.php");
-      
+        <?php include("annoncecardadmin.php");
         } ?>
-       
-      
+
+
 
     </div>
     <?php

@@ -2,7 +2,7 @@
 //$passHash = password_hash("bove123", PASSWORD_DEFAULT);
 //echo ($passHash);
 //var_dump(password_verify("", $passHash));
-require_once('../utils/connectdb.php');
+require_once('utils/connectdb.php');
 
 $errors = [];
 
@@ -19,7 +19,7 @@ $user=$reponse->fetch();
 if ($user !== false && password_verify($_POST['password'], $user['password'])) { {
 session_start();
     $_SESSION['username'] = $_POST['username'];
-    header("location: ../admin/indexadmin.php");
+    header("location: ../admin/index.php");
 }
 
 }else {

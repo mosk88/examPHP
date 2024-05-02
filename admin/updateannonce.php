@@ -3,15 +3,21 @@
 require_once('../utils/connectdb.php');
 $title = "Update annonce";
 include_once('../block/header.php');
+if (!isset($_SESSION['username'])) {
+    header("location:updateannonce.php");
+   }
 $pdo = connectDB();
 configPdo($pdo);
 //recuperation de l'annonce de la bdd par son id 
-$reponse = $pdo->prepare('SELECT * FROM annonce WHERE id = :id');
-$reponse->execute([':id' => $_GET['id']]);
+$reponse =$pdo->prepare('SELECT * FROM dauphineexam.annonce WHERE id = :id');
+$reponse->execute([
+    ':id' => $_GET['id']
+]);
+
 $annonce = $reponse->fetch();
 
 //traitement du formulaire de l'admin modification
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+if ($_SERVER['REQUEST_METHOD'] == 'POST')  {
     $opd = connectdb();
     $query = $opd->prepare('UPDATE annonce SET  imageUrl = :imageUrl, contenu = :contenu, titre = :titre, auteur = :auteur WHERE id = :id');
     $query->execute([

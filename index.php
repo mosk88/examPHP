@@ -1,7 +1,7 @@
 <?php
 
 $title = "Dauphine";
-require_once('../utils/connectdb.php');
+require_once('utils/connectdb.php');
 $pdo = connectDB();
 configPdo($pdo);
 //recuperation des annonces de la bdd
@@ -25,13 +25,13 @@ $annonces = $reponse->fetchAll();
     <div class="d-flex justify-content-between align-items-center  bg-danger ">
         <!-- boucle affichage des annonces -->
         <?php foreach ($annonces as $annonce) { ?>
-        <?php include("../block/annocecard.php");
+        <?php include("block/annocecard.php");
         } ?>
 
     </div>
     <!-- include du footer -->
     <?php
-include_once("../block/footer.php");
+include_once("block/footer.php");
 ?>
 </body>
 
